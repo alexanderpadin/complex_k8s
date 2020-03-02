@@ -1,0 +1,55 @@
+Objects:
+Objects serve a different purpose dependenign the type; such as monitoring, setting up a network, etc.
+The kind of object available are: 
+- Pods
+- Service
+- StatefullSet
+- ReplicaController
+
+
+Pods == runs containers
+
+
+apiVersion: v1 #Change different kin of objects
+kind: Pod #Object pod is the smallest unit in K8s
+metadata:
+  name: client-pod
+  labels: 
+    component: web #used to be linked to a network objetc
+spec: 
+  containers:
+    - name: client
+      image: alexanderpadin/multi-client
+      ports: 
+        - containerPort: 3000 #Exposes port of the container. 
+
+
+
+
+
+#use 
+# kubctl apply -f <file>
+
+#To describe
+kubectl descripe <object type> <name>
+
+#get pods
+kubectl get pods
+kubectl get deployments
+
+#updating a deployment image
+kubectl set image <object type> / <object name> <container_name> = <new_image_to_use>
+example: kubectl set image deployment/client-deployment client=alexanderpadin/multi-client:1
+
+# To connect to the docker in the VM
+eval $(minikube docker-env)
+
+#nodePort vs ClusterIP
+ClusterIP wont allow access from outsite, is stricly created for internal communication
+
+#Always use `Selector` tags to link services with pods
+
+
+
+
+

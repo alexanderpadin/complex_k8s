@@ -25,4 +25,10 @@ spec:
             - name: postgres-storage #Should match the volumeName
               mountPath: /var/lib/postgresql/data #where in the container will be attached?
               subPath: postgres #folder inside the VolumenClaim
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
 

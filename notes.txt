@@ -50,6 +50,10 @@ ClusterIP wont allow access from outsite, is stricly created for internal commun
 #Always use `Selector` tags to link services with pods
 
 
+#Create secret
+# kubectl create secret generic <secret_name> --front-literal <Key-value pair>
+
+//Typre scould be tls keys, docker registry, generic
 
 
 
